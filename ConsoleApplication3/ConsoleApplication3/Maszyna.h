@@ -9,7 +9,7 @@ class Maszyna
 
 public:
 	Maszyna();
-	Maszyna(unsigned short, float, short, unsigned int, int);
+	Maszyna(unsigned short _kalibraz, float _moc, short _rok, unsigned int _licznik, int _numer);
 	Maszyna(const Maszyna &);
 	const Maszyna & operator = (const Maszyna &koparkaRef);
 	~Maszyna();
@@ -26,7 +26,11 @@ public:
 	float getMoc();
 	unsigned short getKalibraz();
 
-	void wyswietlInformacje(int);
-	void wprowadzInformacje();
+	virtual void wyswietlInformacje();
+	virtual void wprowadzInformacje();
+
+protected: 
+	void wyswitlInformacjeBazowe();
+	void wprowadzInformacjeBazowe();
 };
 

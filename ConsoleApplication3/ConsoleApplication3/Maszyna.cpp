@@ -90,25 +90,35 @@ int Maszyna::getNumer()
 }
 
 
-void Maszyna::wyswietlInformacje(int i)
+void Maszyna::wyswietlInformacje()
 {
-	cout << i << ". Dane koparki: " << endl;
-	cout << "Kalibraz: " << *kalibraz << endl;
-	cout << "Moc (KM): " << *moc << endl;
-	cout << "Rok: " << *rok << endl;
-	cout << "Licznik: " << *licznik << endl << endl;
-	cout << "Numer: " << *numer << endl << endl;
+	cout << "Dane maszyny: " << endl;
+	wyswitlInformacjeBazowe();
 }
 
 void Maszyna::wprowadzInformacje()
 {
-	cout << "Wprowadz dane koparki: " << endl;
+	cout << "Wprowadz dane maszyny: " << endl;
+	wprowadzInformacjeBazowe();
+	cout << endl;
+	system("cls");
+
+}
+
+void Maszyna::wyswitlInformacjeBazowe()
+{
+	cout << "Kalibraz: " << *kalibraz << endl;
+	cout << "Moc (KM): " << *moc << endl;
+	cout << "Rok: " << *rok << endl;
+	cout << "Licznik: " << *licznik << endl;
+	cout << "Numer: " << *numer << endl;
+}
+
+void Maszyna::wprowadzInformacjeBazowe()
+{
 	cout << "Kalibraz: "; cin >> *kalibraz;
 	cout << "Moc (KM): "; cin >> *moc;
 	cout << "Rok: "; cin >> *rok;
 	cout << "Licznik: "; cin >> *licznik;
 	cout << "Numer: "; cin >> *numer;
-	cout << endl;
-	system("cls");
-
 }
