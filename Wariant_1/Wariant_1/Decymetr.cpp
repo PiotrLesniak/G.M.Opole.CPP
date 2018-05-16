@@ -7,7 +7,11 @@
 
 using namespace std;
 
-Decymetr::Decymetr(double bok) : Meter(bok)
+Decymetr::Decymetr()
+{
+}
+
+Decymetr::Decymetr(double wartosc) : Meter(wartosc)
 {
 }
 
@@ -18,10 +22,17 @@ Decymetr::~Decymetr()
 
 void Decymetr::Wyswietl()
 {
-	cout << ObliczPole() << " dm" << endl;
+	cout << "Wartosc: " << this->wartosc << " dm, Pole: " << ObliczPole() << " dm^2" << endl;
+
 }
 
 double Decymetr::ObliczPole()
 {
-	return this->bok * this->bok;
+	return this->wartosc * this->wartosc;
+}
+
+void Decymetr::Save(ofstream & s)
+{
+	s << 2 << endl;
+	Meter::Save(s);
 }

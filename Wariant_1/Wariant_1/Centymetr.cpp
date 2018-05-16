@@ -4,10 +4,14 @@
 
 using namespace std;
 
-Centymetr::Centymetr(double bok) : Meter(bok)
+Centymetr::Centymetr(double wartosc) : Meter(wartosc)
 {
 }
 
+Centymetr::Centymetr()
+{
+
+}
 
 Centymetr::~Centymetr()
 {
@@ -15,10 +19,16 @@ Centymetr::~Centymetr()
 
 void Centymetr::Wyswietl()
 {
-	cout << ObliczPole() << " cm" << endl;
+	cout << "Wartosc: " << this->wartosc << " cm, Pole: " << ObliczPole() << " cm^2" << endl;
 }
 
 double Centymetr::ObliczPole()
 {
-	return this->bok * this->bok;
+	return this->wartosc * this->wartosc;
+}
+
+void Centymetr::Save(ofstream & s)
+{
+	s << 1 << endl;
+	Meter::Save(s);
 }

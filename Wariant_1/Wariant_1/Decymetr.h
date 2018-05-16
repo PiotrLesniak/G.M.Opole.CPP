@@ -5,10 +5,12 @@
 class Decymetr : public Meter
 {
 public:
-	Decymetr(double bok);
+	Decymetr();
+	Decymetr(double wartosc);
 	~Decymetr();
 	void Wyswietl() override;
 	double ObliczPole() override;
+	virtual void Save(ofstream& s) override;
 
 };
 
