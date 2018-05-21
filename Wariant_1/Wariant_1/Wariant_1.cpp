@@ -25,12 +25,7 @@ int losuj(int max)
 		return 0;
 	}
 	
-	if (max == 2)
-	{
-		return rand() % 2 + 1;
-	}
-	
-	return rand() % (max-1) + 1;
+	return rand() % max + 1;
 }
 
 void save(string nazwaPliku, Meter* miary[10])
@@ -41,9 +36,7 @@ void save(string nazwaPliku, Meter* miary[10])
 	{
 		miary[i]->Save(strumienPlikuDoZapisu);
 	}
-
-	//store(f, arr);
-	//f << "test" << std::endl;
+		
 	strumienPlikuDoZapisu.close();
 }
 void load(string nazwaPliku, Meter* miary[10])
@@ -87,7 +80,6 @@ void LosujMiary(Meter* miary[10])
 	}
 }
 
-
 bool czyPlikIstnieje(string filename)
 {
 	ifstream ifile(filename);
@@ -115,12 +107,7 @@ int main()
 		miary[i]->Wyswietl();
 	}
 
-	
-
-	
-
-
-	
+		
 	char x;
 	cin >> x;
 	return 0;
