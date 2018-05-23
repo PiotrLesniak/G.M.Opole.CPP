@@ -55,6 +55,12 @@ void Koparka::zapisz(ofstream & strumienZapisuPliku)
 	Maszyna::zapiszInformacjeBazowe(strumienZapisuPliku);
 }
 
+void Koparka::wczytaj(ifstream & strumienOdczytuPliku)
+{
+	strumienOdczytuPliku >> *nazwa;
+	Maszyna::wczytaj(strumienOdczytuPliku);
+}
+
 
 
 

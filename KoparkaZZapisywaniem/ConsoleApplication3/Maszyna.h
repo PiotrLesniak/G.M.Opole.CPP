@@ -35,8 +35,10 @@ public:
 	virtual void wyswietlInformacje();
 	virtual void wprowadzInformacje();
 
+	virtual void wypiszWLinii();
+	
 	virtual void zapisz(ofstream & strumienZapisuPliku);
-
+	virtual void wczytaj(ifstream & strumienOdczytuPliku);
 
 protected: 
 	void wyswitlInformacjeBazowe();
@@ -44,6 +46,7 @@ protected:
 	
 	void zapiszInformacjeBazowe(ofstream & strumienZapisuPliku);
 
+	string* ustandaryzujDlugosc(string wartosc, int dlugoscNapisu);
 };
 
 

@@ -147,6 +147,7 @@
   <ItemGroup>
     <ClInclude Include="BazaDanych.h" />
     <ClInclude Include="Koparka.h" />
+    <ClInclude Include="Menu.h" />
     <ClInclude Include="Maszyna.h" />
     <ClInclude Include="stdafx.h" />
     <ClInclude Include="targetver.h" />
@@ -155,6 +156,7 @@
     <ClCompile Include="BazaDanych.cpp" />
     <ClCompile Include="ConsoleApplication3.cpp" />
     <ClCompile Include="Koparka.cpp" />
+    <ClCompile Include="Menu.cpp" />
     <ClCompile Include="Maszyna.cpp" />
     <ClCompile Include="stdafx.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Create</PrecompiledHeader>

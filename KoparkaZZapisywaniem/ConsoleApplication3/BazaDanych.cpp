@@ -5,7 +5,8 @@
 BazaDanych::BazaDanych()
 {
 	this->iloscMaszyn = 0;
-	this->tablicaMaszyn = new Maszyna*[10];
+	this->wielkoscTablicy = 10;
+	this->tablicaMaszyn = new Maszyna*[this->wielkoscTablicy];
 }
 
 void BazaDanych::zapisz(string nazwaPliku)
@@ -24,8 +25,44 @@ void BazaDanych::zapisz(string nazwaPliku)
 	strumienPlikuDoZapisu.close();
 }
 
+void BazaDanych::wczytaj(string nazwaPliku)
+{
+	ifstream strumienPlikuDoOdczytu;
+	strumienPlikuDoOdczytu.open(nazwaPliku);
+	
+	delete this->tablicaMaszyn;
+
+	strumienPlikuDoOdczytu >> this->iloscMaszyn;
+	this->wielkoscTablicy = this->iloscMaszyn + 10;
+	this->tablicaMaszyn = new Maszyna*[this->wielkoscTablicy];
+	
+	for (int i = 0; i < this->iloscMaszyn; i++)
+	{
+		Maszyna* m = new Maszyna();
+		//tu robimy obiekt bo musimy zainicjowac wskaznik
+		int typ;
+		strumienPlikuDoOdczytu >> typ;
+		switch (typ)
+		{
+		case 1:
+			m = new Maszyna();
+			break;
+		case 2:
+			m = new Koparka();
+			break;
+		}
+		m->wczytaj(strumienPlikuDoOdczytu);
+		this->tablicaMaszyn[i] = m;
+	}
+	strumienPlikuDoOdczytu.close();
+}
+
 void BazaDanych::dodajMaszyne(Maszyna * maszyna)
 {
+	if (this->wielkoscTablicy == this->iloscMaszyn)
+	{
+		this->powiekszTabliceMaszyn();
+	}
 	tablicaMaszyn[iloscMaszyn] = maszyna;
 	this->iloscMaszyn++;
 }
@@ -46,7 +83,25 @@ void BazaDanych::usunMaszyne(int index)
 	tablicaMaszyn[iloscMaszyn] = 0;
 }
 
+Maszyna * BazaDanych::getMaszyna(int index)
+{
+	return this->tablicaMaszyn[index];
+}
 
+
+
+
+void BazaDanych::powiekszTabliceMaszyn()
+{
+	this->wielkoscTablicy = this->iloscMaszyn + 10;
+	Maszyna ** pomTablicaMaszyn = new Maszyna*[this->wielkoscTablicy];
+	for (int i = 0; i < this->iloscMaszyn; i++)
+	{
+		pomTablicaMaszyn[i] = this->tablicaMaszyn[i];
+	}
+	delete this->tablicaMaszyn;
+	this->tablicaMaszyn = pomTablicaMaszyn;
+}
 
 BazaDanych::~BazaDanych()
 {

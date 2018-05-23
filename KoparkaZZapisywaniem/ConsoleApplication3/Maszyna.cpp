@@ -111,6 +111,20 @@ void Maszyna::wprowadzInformacje()
 
 }
 
+void Maszyna::wypiszWLinii()
+{
+	this->moc;
+	//std::ostringstream ss;
+	//ss << this->moc;
+
+	//to_string(3.1415926);
+	cout << this->ustandaryzujDlugosc(*kalibraz + "", 10) << " ";
+	//cout << this->ustandaryzujDlugosc(*moc + "", 10) << " ";
+	cout << this->ustandaryzujDlugosc(*rok + "", 10) << " ";
+	cout << this->ustandaryzujDlugosc(*licznik + "", 10) << " ";
+	cout << this->ustandaryzujDlugosc(*numer + "", 10) << " ";
+}
+
 
 void Maszyna::wyswitlInformacjeBazowe()
 {
@@ -137,6 +151,15 @@ void Maszyna::zapisz(ofstream & strumienZapisuPliku)
 	zapiszInformacjeBazowe(strumienZapisuPliku);
 }
 
+void Maszyna::wczytaj(ifstream & strumienOdczytuPliku)
+{
+	strumienOdczytuPliku >> *kalibraz;
+	strumienOdczytuPliku >> *moc;
+	strumienOdczytuPliku >> *rok;
+	strumienOdczytuPliku >> *licznik;
+	strumienOdczytuPliku >> *numer;
+}
+
 void Maszyna::zapiszInformacjeBazowe(ofstream & strumienZapisuPliku)
 {
 	strumienZapisuPliku << *kalibraz << endl;
@@ -144,4 +167,16 @@ void Maszyna::zapiszInformacjeBazowe(ofstream & strumienZapisuPliku)
 	strumienZapisuPliku << *rok << endl;
 	strumienZapisuPliku << *licznik << endl;
 	strumienZapisuPliku << *numer << endl;
+}
+
+
+string* Maszyna::ustandaryzujDlugosc(string wartosc, int dlugoscNapisu)
+{
+	
+//	for (int i = wartosc.length; i < dlugoscNapisu - wartosc.length; i++)
+//	{
+	//	wartosc += ' ';
+//	}
+	return &wartosc;
+
 }

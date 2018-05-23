@@ -1,67 +1,55 @@
-// ConsoleApplication3.cpp : Defines the entry point for the console application.
-//
-
 #include "stdafx.h"
 #include "Maszyna.h"
 #include "Koparka.h"
 #include "BazaDanych.h"
-
+#include "Menu.h"
 #include <iostream>
 
 using namespace std;
 
-Maszyna* stworzMaszyne()
-{
-	char rodzaj;
-	Maszyna* maszyna;
-	cout << "kopartka - k" << endl << " maszyna - m" << endl;
-	cin >> rodzaj;
-	if (rodzaj == 'k')
-	{
-		maszyna = new Koparka();
-	}
-	else {
-		maszyna = new Maszyna();
-	}
-	system("cls");
-	maszyna->wprowadzInformacje();
-	system("cls");
-	maszyna->wyswietlInformacje();
-
-	return maszyna;
-}
 
 int main()
 {
+
 	BazaDanych *bazadanych = new BazaDanych();
-	bazadanych->zapisz("test1.txt");
+	Menu *menu = new Menu(bazadanych);
 	
-	Maszyna *m = stworzMaszyne();
-	bazadanych->dodajMaszyne(m);
-
-	m = stworzMaszyne();
-	bazadanych->dodajMaszyne(m);
-	bazadanych->zapisz("test1.txt");
+	
+	
 
 
-	Maszyna* maszyna;
-	
-	bool dziala = true;
-	
-	char czyKontynuowac;
-	while (dziala)
-	{
 		
 
-		cout << "czy kontynuowac (t/n)";
-		cin >> czyKontynuowac;
-		if (czyKontynuowac == 'n')
+	bool dziala = true;
+	
+	
+	while (dziala)
+	{
+		switch (menu->UruchomMenu())
 		{
-			dziala = false;
+		case 1://odczyt
+			menu->Odczytaj();
+			break;
+		case 2://zapis
+			menu->Zapisz();
+			break;
+		case 3://dodawanie maszyny
+			menu->DodajMaszyne();
+			break;
+		case 4://usuwanie maszyny
+			menu->UsunMaszyne();
+			break;
+		case 5://wyszukaj maszyne
+			   //capa++;
+			break;
+		case 6:// wypisz wszystkie maszyny
+			   //capa++;
+			break;
+		case 7:dziala = false;
+			break;
 		}
-		else {
-			system("cls");
-		}
+
+		
 
 	}
 

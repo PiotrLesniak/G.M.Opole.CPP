@@ -24,6 +24,7 @@ public:
 	virtual void wyswietlInformacje() override;
 	virtual void wprowadzInformacje() override;
 	virtual void zapisz(ofstream & strumienZapisuPliku) override;
+	virtual void wczytaj(ifstream & strumienOdczytuPliku) override;
 
 };
 
