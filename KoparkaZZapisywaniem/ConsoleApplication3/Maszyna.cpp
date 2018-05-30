@@ -6,6 +6,7 @@
 #include <fstream>
 #include <conio.h>
 #include <math.h>
+#include <string>     // std::string, std::to_string
 
 using namespace std;
 
@@ -113,13 +114,9 @@ void Maszyna::wprowadzInformacje()
 
 void Maszyna::wypiszWLinii()
 {
-	this->moc;
-	//std::ostringstream ss;
-	//ss << this->moc;
 
-	//to_string(3.1415926);
 	cout << this->ustandaryzujDlugosc(*kalibraz + "", 10) << " ";
-	//cout << this->ustandaryzujDlugosc(*moc + "", 10) << " ";
+	cout << this->ustandaryzujDlugosc(to_string(*moc) + "", 10) << " ";
 	cout << this->ustandaryzujDlugosc(*rok + "", 10) << " ";
 	cout << this->ustandaryzujDlugosc(*licznik + "", 10) << " ";
 	cout << this->ustandaryzujDlugosc(*numer + "", 10) << " ";
@@ -172,11 +169,11 @@ void Maszyna::zapiszInformacjeBazowe(ofstream & strumienZapisuPliku)
 
 string* Maszyna::ustandaryzujDlugosc(string wartosc, int dlugoscNapisu)
 {
-	
-//	for (int i = wartosc.length; i < dlugoscNapisu - wartosc.length; i++)
-//	{
-	//	wartosc += ' ';
-//	}
+	int len = wartosc.length();
+	for (int i = len; i < dlugoscNapisu - len; i++)
+	{
+		wartosc += ' ';
+	}
 	return &wartosc;
 
 }
