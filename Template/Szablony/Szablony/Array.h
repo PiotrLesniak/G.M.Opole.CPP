@@ -3,13 +3,6 @@
 #include <stdexcept>
 using namespace std;
 
-//class Array
-//{
-//public:
-	//Array();
-	//~Array();
-//};
-
 template <class T>
 class Array
 {
