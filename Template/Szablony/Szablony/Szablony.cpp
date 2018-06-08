@@ -1,12 +1,14 @@
-// Szablony.cpp : Defines the entry point for the console application.
-//
-
 #include "stdafx.h"
 #include <iostream>
 #include "Array.h"
 using namespace std;
 
-template<typename T> Array <T> suma(T K, Array <T> tablica)
+/*
+template<typename T> - template funkcji o zmiennej T
+					   która pozniej bedzie zast¹piona odpowienim typem 
+					   jak int lub double
+*/
+template<typename T> Array<T> suma(T K, Array<T> tablica)
 { 
 	for (int i = 0; i < tablica.size(); i++)
 	{
@@ -28,8 +30,6 @@ int main()
 {
 	Array <int> intArray(5);
 	cout << "-= Test dla typu int =-" << endl << endl;
-
-	//cout << d.size() << " " << d.capacity() << endl;
 	
 	for (int i = 0; i < 12; ++i)
 	{

@@ -148,17 +148,33 @@ public:
 		return *this;
 	}
 
+	/*funkcja usuwa element o podanym indeksie
+	  zwracamy: false - jezeli niepoprane dane
+			    true - jezeli udalo sie uzunac element
+	*/
 	bool removeAt(int index)
 	{
+		// jezeli podamy inseks wiekszy od cout (ilosc elementow) 
+		//to wychodzimy z funcji z wartoscia false
 		if (index >= Count)
 		{
 			return false;
 		}
+		//zaczynamy iterosc od naszego elementu ktory chcemy usunac
+		//przykrywamy go kolejnym elementem
+		//kolejny element przykrywamy jeszcze kolejnym i tak dalej
+		// konczymy iterowac kiedy i<Count-1
+		//-1 bo musimy skonczyc na elemencie przedostatnim dlatego ze
+		// w srodku petli mamy odwolanie do elementu o jeden wiekszedo od i
+		// czyli elems[i + 1]
 		for(int i=index; i<Count-1; i++)
 		{ 
 			elems[i] = elems[i + 1];
 		}
+		// zmniejszamy ilosc elementow o 1;
 		Count--;
+		//jezeli doszlismy do tego momentu to znaczy,
+		//ze udalo sie usunac i mozemy zwrocic wartoc true
 		return true;
 	}
 

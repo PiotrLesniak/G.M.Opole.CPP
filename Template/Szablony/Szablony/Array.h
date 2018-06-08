@@ -3,12 +3,20 @@
 #include <stdexcept>
 using namespace std;
 
-template <class T>
+/*
+template <class T>  - template klasy o zmiennej T
+która pozniej bedzie zast¹piona odpowienim typem
+jak int lub double
+*/
+template <class T> 
 class Array
 {
 
 public:
 	//synonimy typów
+	/*tutaj definiujemy nasze wlasne typy 
+	  (cos jak int lub double, ale nasze)
+	*/
 	typedef T type_value;
 	typedef T* iterator;
 	typedef const T* const_iterator;
@@ -16,9 +24,17 @@ public:
 	typedef const T& const_reference;
 	typedef size_t size_type;
 	//konstruktor
+	//minsize - to jest statyczne pole klasy - zdefiniowane na koncu klasy
+	// '= minsize' - to oznacza domyslna wartosc dla &n.
 	Array(const size_type &n = minsize)
 	{
+		/*
+		Count = 0; dlatego, ¿e w konstruktorze tworzymy tablice, 
+		ale nie mamy tam w³orzonych elementow.
+		(tablica nie jest zape³niona danymi)
+		*/
 		Count = 0;
+
 		if (n < minsize)
 		{
 			elems = new type_value[minsize]; Size = minsize;
@@ -37,23 +53,35 @@ public:
 			elems[i] = ref.elems[i];
 	}
 	//konstruktor przez iteratory
+	/*jezeli chcemy tablice uzupelniona kolejnymi liczbami 
+	od first do last (np 5, 6, 7, 8, 9, 10) 
+	to podajmy pierwszy (first) i ostatni elent (last)
+	*/
 	Array(iterator first, iterator last)
 	{
-		if (first<last)
+		if (*first<*last) //sprawdzenie, czy podalismy poprawne dane
 		{
-			size_type n = last - first;
+			size_type n = *last - *first;//obliczamy jak duza powinna byc tablica
+			//count jest n a nie 0 bo tu bedziemy mieli dane.
 			Count = n;
+			//to jest to samo co w podstawowym konstruktorze
 			if (n < minsize)
 			{
 				elems = new type_value[minsize]; Size = minsize;
 			}
 			else elems = new type_value[n];
-			for (unsigned i = 0; i<Count; i++)
-				elems[i] = *(first + i);
+			//tutaj uzupelniamy tablice wartosciami
+			for (unsigned i = 0; i < Count; i++)
+			{
+				type_value v = *first + (type_value)i;
+				elems[i] = v;
+			}
+
 		}
+		//jerzeli dane sa nie poprawne to rzucamy wyjatek
 		else throw invalid_argument("Invalid argument!");
 	}
-	//operator przepicania
+	//operator przepisania (dziala jak konstruktor kopiujacy)
 	Array& operator = (const Array &ref)
 	{
 		if (this != &ref)
@@ -146,7 +174,7 @@ public:
 	~Array() { delete[] elems; };
 private:
 	static const size_type minsize = 10; //minimalny rozmiar tablicy
-	size_type Size;   //liczba przydzielonych elementów pamiêci
-	size_type Count;  //liczba przydzielonych elementów tablicy
-	type_value *elems;//wskaŸnik do danych
+	size_type Size;   //liczba przydzielonych elementów pamiêci (wielkosc tablicy)
+	size_type Count;  //liczba przydzielonych elementów tablicy (ilosc uzywanych elementow)
+	type_value *elems;//wskaŸnik do danych (wskaŸnik na tablice)
 };

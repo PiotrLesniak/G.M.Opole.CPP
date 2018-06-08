@@ -5,30 +5,42 @@
 #include <iostream>
 using namespace std;
 
-
+//pasuje do wskaznika int(*dzialanie)(int, int)
 int dodawanie(int a, int b)
 {
 	return a + b;
 }
+//pasuje do wskaznika int(*dzialanie)(int, int)
 int mnozenie(int a, int b)
 {
 	return a * b;
 }
-
+//pasuje do wskaznika double(*dzialanie)(double, double)
 double dodawanie(double a, double b)
 {
 	return a + b;
 }
+//pasuje do wskaznika double(*dzialanie)(double, double)
 double mnozenie(double a, double b)
 {
 	return a * b;
 }
 
 //http://cpp0x.pl/kursy/Kurs-C++/Poziom-X/Wskaznik-na-funkcje/249
+/*
+funkcja tworzy tablice o zadanej wielkosci (parametr wielkoscTablicy)
+nasepnie uzuep≥nia ja elementami rosnacymi co 1 zaczynajac od wartosci 1 
+czyli np. 1, 2, 3..
+w ostatnim kroku wykonuje na elementach tablicy zadenej operacji z uzyciem elemenu K
+
+T(*dzialanie)(T, T) = dodawanie - jest to wskaünik na funkcje
+(z uzyciem zmiennej z template T). Domysknie funkcja dodawanie
+*/
 template<typename T> T* operacjaNatablicy(int wielkoscTablicy = 10, T K = 1, T(*dzialanie)(T, T) = dodawanie)
 { 
-	T* tablica = new T[wielkoscTablicy];
 	//tworzymy tablice
+	T* tablica = new T[wielkoscTablicy];
+	//uzupe≥niamy tablice
 	for (int i = 0; i < wielkoscTablicy; i++)
 	{
 		tablica[i] = (T)(i+1);
@@ -38,10 +50,11 @@ template<typename T> T* operacjaNatablicy(int wielkoscTablicy = 10, T K = 1, T(*
 	{
 		tablica[i] = dzialanie(tablica[i],K);
 	}
+	//zwracamy wsazik do tablicy
 	return tablica;
 }
 
-
+//funckaj template - pomocnicza do wypiswania elementow tablicy
 template<typename T> void printArray(T* arrayOfT, int lenght)
 {
 	cout << "[";
@@ -63,6 +76,10 @@ int main()
 	cin >> Kint;
 
 	cout << "tablica + K = " << endl;
+	//w template podajmy Kint z tad kompilator wie ze T = int
+	//dlatego jako ostatni parametr mamy wygenerowany wskaznik - int(*dzialanie)(int, int)
+	//patametr dodawanie - jest to wiec funkcja int dodawanie(int a, int b)
+	
 	int* tabl = operacjaNatablicy(lenght, Kint, dodawanie);
 	cout << "wynik to: " << endl;
 	printArray(tabl, lenght);
@@ -83,6 +100,10 @@ int main()
 	cin >> Kdouble;
 
 	cout << "tablica + K = " << endl;
+	//w template podajmy Kdouble (typu double) z tad kompilator wie ze T = double
+	//dlatego jako ostatni parametr mamy wygenerowany wskaznik - double(*dzialanie)(double, double)
+	//patametrem dodawanie - jest to wiec funkcja int dodawanie(int a, int b)
+
 	double* tablDouble = operacjaNatablicy(lenght, Kdouble, dodawanie);
 	cout << "wynik to: " << endl;
 	printArray(tablDouble, lenght);
@@ -93,7 +114,15 @@ int main()
 	cout << "wynik to: " << endl;
 	printArray(tablDouble, lenght);
 	
+
 	cout << "-= Test dla wywolania parametrow domyslnych =-" << endl << endl;
+	/*wszystkie paramtetry naszej funkcji maja parametry domyslne 
+	wiek comzemy wywolac ta funkcje bez parametrow.
+	Jeøeli jednak nie podajmy elemenu K to kompilator nie ma moøliwoúci 
+	dopasowania odpowiedniego typu za T.
+	Musimy wiec mu jawnie wskazaÊ jaki typ bedzie uzyty za T
+	poprzez podanie za nazwa funkcji np. <int>
+	*/
 	tabl = operacjaNatablicy<int>();
 	cout << "wynik to: " << endl;
 	printArray(tabl, 10);
