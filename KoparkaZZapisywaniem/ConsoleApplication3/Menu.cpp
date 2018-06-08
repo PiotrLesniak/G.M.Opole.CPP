@@ -40,6 +40,7 @@ void Menu::Odczytaj()
 	cout << "podaj nazwê pliku: ";
 	string nazwaPliku;
 	cin >> nazwaPliku;
+	//nazwaPliku = "test.txt";
 	bazadanych->wczytaj(nazwaPliku);
 	system("cls");
 	cout << "dane zosta³y odczytane z pliku: " << nazwaPliku << endl;
@@ -77,6 +78,42 @@ void Menu::UsunMaszyne()
 	system("cls");
 	cout << "usunieto maszyne o indeksie " << index << endl;
 }
+
+void Menu::Wypisz()
+{
+	
+	cout << "|typ       |kalibraz  |moc       |rok |licznik   |numer     |nazwa     " << endl;
+
+	for (int i = 0; i < bazadanych->getIloscMaszyn(); i++)
+	{
+		Maszyna* maszyna = bazadanych->getMaszyna(i);
+		maszyna->wypiszWLinii();
+		cout << endl;
+	}
+	
+}
+
+void Menu::Znajdz()
+{
+	WypiszWybranaFunkcje("Wyszukiwanie maszyny");
+	cout << "podaj fraze wyszukiwania:";
+	string frazaWyszukiwania;
+	cin >> frazaWyszukiwania;
+
+	cout << "|typ       |kalibraz  |moc       |rok |licznik   |numer     |nazwa     " << endl;
+
+	for (int i = 0; i < bazadanych->getIloscMaszyn(); i++)
+	{
+		Maszyna* maszyna = bazadanych->getMaszyna(i);
+		if (maszyna->czyZawiera(frazaWyszukiwania))
+		{
+			maszyna->wypiszWLinii();
+			cout << endl;
+		}
+	}
+}
+
+
 
 Maszyna* Menu::StworzMaszyne()
 {

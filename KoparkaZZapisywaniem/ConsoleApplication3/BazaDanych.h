@@ -17,6 +17,7 @@ public:
 	void dodajMaszyne(Maszyna* maszyna);
 	void usunMaszyne(int index);
 	Maszyna* getMaszyna(int index);
+	int getIloscMaszyn();
 private:
 	Maszyna ** tablicaMaszyn;
 	int wielkoscTablicy;

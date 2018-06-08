@@ -61,6 +61,19 @@ void Koparka::wczytaj(ifstream & strumienOdczytuPliku)
 	Maszyna::wczytaj(strumienOdczytuPliku);
 }
 
+void Koparka::wypiszWLinii()
+{
+	Maszyna::wypiszWLinii("Koparka");
+	cout << *nazwa ;
+}
+
+bool Koparka::czyZawiera(string wartosc)
+{
+	return Maszyna::czyZawiera(wartosc)
+		|| czyZawieraFrazeWZmiennej(*nazwa, wartosc);
+}
+
+
 
 
 

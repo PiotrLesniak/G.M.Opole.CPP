@@ -88,6 +88,11 @@ Maszyna * BazaDanych::getMaszyna(int index)
 	return this->tablicaMaszyn[index];
 }
 
+int BazaDanych::getIloscMaszyn()
+{
+	return this->iloscMaszyn;
+}
+
 
 
 

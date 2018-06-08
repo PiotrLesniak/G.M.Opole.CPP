@@ -40,13 +40,14 @@ public:
 	virtual void zapisz(ofstream & strumienZapisuPliku);
 	virtual void wczytaj(ifstream & strumienOdczytuPliku);
 
+	virtual bool czyZawiera(string wartosc);
 protected: 
 	void wyswitlInformacjeBazowe();
 	void wprowadzInformacjeBazowe();
-	
+	void wypiszWLinii(string typ);
 	void zapiszInformacjeBazowe(ofstream & strumienZapisuPliku);
-
-	string* ustandaryzujDlugosc(string wartosc, int dlugoscNapisu);
+	bool czyZawieraFrazeWZmiennej(string zmienna, string wartosc);
+	string ustandaryzujDlugosc(string wartosc, int dlugoscNapisu);
 };
 
 

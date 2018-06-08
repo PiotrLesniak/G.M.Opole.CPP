@@ -114,12 +114,7 @@ void Maszyna::wprowadzInformacje()
 
 void Maszyna::wypiszWLinii()
 {
-
-	cout << this->ustandaryzujDlugosc(*kalibraz + "", 10) << " ";
-	cout << this->ustandaryzujDlugosc(to_string(*moc) + "", 10) << " ";
-	cout << this->ustandaryzujDlugosc(*rok + "", 10) << " ";
-	cout << this->ustandaryzujDlugosc(*licznik + "", 10) << " ";
-	cout << this->ustandaryzujDlugosc(*numer + "", 10) << " ";
+	wypiszWLinii("Maszyna");
 }
 
 
@@ -141,6 +136,17 @@ void Maszyna::wprowadzInformacjeBazowe()
 	cout << "Numer: "; cin >> *numer;
 }
 
+void Maszyna::wypiszWLinii(string typ)
+{
+	cout << "|";
+	cout << this->ustandaryzujDlugosc(typ, 10) << "|";
+	cout << this->ustandaryzujDlugosc(to_string(*kalibraz), 10) << "|";
+	cout << this->ustandaryzujDlugosc(to_string(*moc), 10) << "|";
+	cout << this->ustandaryzujDlugosc(to_string(*rok), 4) << "|";
+	cout << this->ustandaryzujDlugosc(to_string(*licznik), 10) << "|";
+	cout << this->ustandaryzujDlugosc(to_string(*numer), 10) << "|";
+}
+
 
 void Maszyna::zapisz(ofstream & strumienZapisuPliku)
 {
@@ -157,6 +163,15 @@ void Maszyna::wczytaj(ifstream & strumienOdczytuPliku)
 	strumienOdczytuPliku >> *numer;
 }
 
+bool Maszyna::czyZawiera(string wartosc)
+{
+	return czyZawieraFrazeWZmiennej(to_string(*kalibraz), wartosc)
+		|| czyZawieraFrazeWZmiennej(to_string(*moc), wartosc)
+		|| czyZawieraFrazeWZmiennej(to_string(*rok), wartosc)
+		|| czyZawieraFrazeWZmiennej(to_string(*licznik), wartosc)
+		|| czyZawieraFrazeWZmiennej(to_string(*numer), wartosc);
+}
+
 void Maszyna::zapiszInformacjeBazowe(ofstream & strumienZapisuPliku)
 {
 	strumienZapisuPliku << *kalibraz << endl;
@@ -166,14 +181,20 @@ void Maszyna::zapiszInformacjeBazowe(ofstream & strumienZapisuPliku)
 	strumienZapisuPliku << *numer << endl;
 }
 
+bool Maszyna::czyZawieraFrazeWZmiennej(string zmienna, string wartosc)
+{
+	//http://www.algorytm.edu.pl/biblioteki/string/find.html
+	return zmienna.find(wartosc) != string::npos; //jesli znaleziono frazê 
+}
 
-string* Maszyna::ustandaryzujDlugosc(string wartosc, int dlugoscNapisu)
+
+string Maszyna::ustandaryzujDlugosc(string wartosc, int dlugoscNapisu)
 {
 	int len = wartosc.length();
-	for (int i = len; i < dlugoscNapisu - len; i++)
+	for (int i = 0; i < dlugoscNapisu - len; i++)
 	{
 		wartosc += ' ';
 	}
-	return &wartosc;
+	return wartosc;
 
 }

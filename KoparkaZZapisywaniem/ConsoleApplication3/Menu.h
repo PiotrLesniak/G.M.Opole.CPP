@@ -16,6 +16,8 @@ public:
 	void Zapisz();
 	void DodajMaszyne();
 	void UsunMaszyne();
+	void Wypisz();
+	void Znajdz();
 
 private: 
 	Maszyna* StworzMaszyne();

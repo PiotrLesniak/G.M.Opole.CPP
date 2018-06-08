@@ -13,11 +13,6 @@ int main()
 
 	BazaDanych *bazadanych = new BazaDanych();
 	Menu *menu = new Menu(bazadanych);
-	
-	
-	
-
-
 		
 
 	bool dziala = true;
@@ -40,10 +35,10 @@ int main()
 			menu->UsunMaszyne();
 			break;
 		case 5://wyszukaj maszyne
-			   //capa++;
+			menu->Znajdz();
 			break;
 		case 6:// wypisz wszystkie maszyny
-			   //capa++;
+			menu->Wypisz();
 			break;
 		case 7:dziala = false;
 			break;
