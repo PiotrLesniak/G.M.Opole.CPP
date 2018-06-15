@@ -27,7 +27,6 @@ Maszyna::Maszyna(unsigned short _kalibraz, float _moc, short _rok, unsigned int 
 	this->licznik = new unsigned int(_licznik);
 	this->rok = new short(_rok);
 	this->numer = new int(_numer);
-
 }
 
 Maszyna::Maszyna(const Maszyna & kopia)

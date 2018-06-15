@@ -11,19 +11,17 @@ using namespace std;
 int main()
 {
 
-	BazaDanych *bazadanych = new BazaDanych();
+	BazaDanych *bazadanych = new BazaDanych(); //tworzymy obiekt bazy danych
 	Menu *menu = new Menu(bazadanych);
-		
 
 	bool dziala = true;
-	
-	
+		
 	while (dziala)
 	{
-		switch (menu->UruchomMenu())
+		switch (menu->UruchomMenu()) //menu->UruchomMenu() - wypisuje opcje menu i pobiera od uzytkownika wybrana opcje
 		{
 		case 1://odczyt
-			menu->Odczytaj();
+			menu->Odczytaj();// (plik testowy: test.txt)
 			break;
 		case 2://zapis
 			menu->Zapisz();

@@ -21,7 +21,7 @@ public:
 
 private: 
 	Maszyna* StworzMaszyne();
-	BazaDanych *bazadanych;
+	BazaDanych *bazadanych; //menu posiada w sobie baze danych
 	void WypiszWybranaFunkcje(string nazwaFunckji);
 };
 

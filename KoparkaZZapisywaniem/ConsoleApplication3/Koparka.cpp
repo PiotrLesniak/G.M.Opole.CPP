@@ -42,7 +42,7 @@ void Koparka::wyswietlInformacje()
 void Koparka::wprowadzInformacje()
 {
 	cout << "Wprowadz dane koparki: " << endl;
-	cout << "Nazwa: "; cin >> *nazwa;
+	cout << "Nazwa (bez spacji): "; cin >> *nazwa;
 	wprowadzInformacjeBazowe();
 	cout << endl;
 	system("cls");

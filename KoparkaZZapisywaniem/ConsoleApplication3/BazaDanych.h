@@ -19,13 +19,13 @@ public:
 	Maszyna* getMaszyna(int index);
 	int getIloscMaszyn();
 private:
-	Maszyna ** tablicaMaszyn;
+	Maszyna ** tablicaMaszyn;//wskaznik ktoru pokazuje na tablice wskaniznikow, ktore pokazuja na odpowiednie maszyny
 	int wielkoscTablicy;
 	int iloscMaszyn;
 
 	Maszyna * wybranaMaszyna;
 	void powiekszTabliceMaszyn();
-	
+	void usunTabliceMaszyn();
 
 	~BazaDanych();
 };
