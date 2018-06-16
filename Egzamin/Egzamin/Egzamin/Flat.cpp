@@ -53,6 +53,5 @@ void Flat::Input()
 
 Flat::~Flat()
 {
-	House::~House();
 	delete Owner;
 }

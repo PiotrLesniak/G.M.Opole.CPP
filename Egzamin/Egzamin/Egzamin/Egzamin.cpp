@@ -37,6 +37,10 @@ int main()
 	House *house3 = new House(house2);
 	house3->Print();
 
+	cout << "test konstruktora z parametrami" << endl;
+	house3 = new House(new char('a'), 5);
+	house3->Print();
+
 	cout << "Flat" << endl;
 	cout << "tworze house1" << endl;
 	House* flat1 = new Flat();
@@ -54,13 +58,10 @@ int main()
 	type = flat1->GetType();
 	cout << "type=" << *type << endl;
 
-
-	
-
-
-	//test operatora = 
+	cout << "test konstruktora z parametrami" << endl;
 	Flat flat2;
 	Flat* flat3 = new Flat(new char('a'), 2, new char('b'));
+	cout << "test operatora =" << endl;
 	flat2 = *flat3;
 	flat2.Print();
 
