@@ -23,7 +23,7 @@ Flat::Flat(const Flat& flat) : House(flat)
 const Flat & Flat::operator=(const Flat& flat)
 {
 	House::operator=(flat);
-	this->Owner = flat.Owner;
+	this->Owner = new char(*flat.Owner);
 	return *this;
 }
 
@@ -40,7 +40,7 @@ char * Flat::GetOwner()
 void Flat::Print()
 {
 	House::Print();
-	cout << "Uzytkownik: " << Owner;
+	cout << "Uzytkownik: " << *Owner << endl;
 }
 
 void Flat::Input()

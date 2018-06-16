@@ -25,13 +25,14 @@ House::House(const House& house) //konstruktor kopiujacy;
 
 const House& House::operator=(const House & house)
 {
-	this->Type = house.Type;
+	this->Type = new char(*house.Type);
 	this->Number = house.Number;
 	return *this;
 }
 
-void House::SetType(char *)
+void House::SetType(char* type)
 {
+	this->Type = type;
 }
 
 char * House::GetType()
@@ -52,16 +53,16 @@ int House::GetNmber()
 
 void House::Print()
 {
-	cout << "Podaj numer: ";
-	cin >> Number;
-	cout << "Podaj typ: ";
-	cin >> Type;
+	cout << "Numer: " << Number << endl;
+	cout << "Typ: " << *Type << endl;
 }
 
 void House::Input()
 {
-	cout << "Numer: " << Number;
-	cout << "Typ" << *Type;
+	cout << "Podaj numer: ";
+	cin >> Number;
+	cout << "Podaj typ: ";
+	cin >> Type;
 }
 
 House::~House()
