@@ -5,6 +5,9 @@ public abstract class Mashine {
 	private int yearOfProduction;
 	private String name;
 	
+	private int fuelLevel;
+	private int maxFuelLevel;
+	
 	public abstract void showInformation();
 	
 	protected void showBaseInformarion()

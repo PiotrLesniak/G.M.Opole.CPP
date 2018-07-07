@@ -7,16 +7,42 @@ import java.io.InputStreamReader;
 public class Main {
 
 	public static void main(String[] args) {
-	
+		Saiving saiving = new FileSaiving();
+		
+		
+		
+		//System.out.println("  *");
+		//System.out.println(" ***");
+		//System.out.println("*****");
+		//System.out.println("  #");
+		saiving.save();
+		
+		System.out.println("");
 		
 		//Mashine m = new Mashine();
 		//m.showInformation();
-		Mashine m;
-		m = new Excavator();
-		m.showInformation();
 		
-		m = new Truck();
-		m.showInformation();
+		
+		
+		Excavator excavator= new Excavator(); 
+		Truck truck= new Truck();
+		PneumaticHammer pneumaticHammer = new PneumaticHammer(100);
+		
+		Mashine[] mashines = new Mashine[3];
+		mashines[0] = excavator; 
+		mashines[1] = truck; 
+		mashines[2] = pneumaticHammer; 
+		
+		IVehicle[] vehicles = new IVehicle[2];
+		vehicles[0] = excavator;
+		vehicles[1] = truck;
+		
+		showInformation(mashines);
+		refueling(vehicles);
+		
+		Object o = new Excavator();
+		
+		
 		
 		
 		//typy proste	
@@ -64,5 +90,20 @@ public class Main {
 	        
 	}
 	
+	public static void showInformation(Mashine[] mashines)
+	{
+		for(int i=0; i<mashines.length; i++)
+		{
+			mashines[i].showInformation();
+		}
+	}
 
+	public static void refueling(IVehicle[] vehicle)
+	{
+		for(int i=0; i<vehicle.length; i++)
+		{
+			vehicle[i].refueling();
+		}
+	}
+	
 }
