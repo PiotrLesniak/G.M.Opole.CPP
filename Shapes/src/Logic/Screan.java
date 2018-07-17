@@ -1,37 +1,48 @@
 package Logic;
 
-public class Screan implements IScreanForShapes, IScrean{
+/***
+ * Klasa screan przechoduje tablice 2 wymiarowa pikseli.
+ * Implementuje 2 interfejsy - 
+ * IScreanForShapes - dla klas krzta³tów
+ * IScrean - dla innych klas (w naszym przyk³adnie Main)
+ * 
+ */
+public class Screan implements IScreanForShapes, IScrean {
 
-	//private int height;
-	//private int width;
-	private char[][] pixels;
+	static Screan insance;
 	
-	public Screan(int width, int height)
+	private char[][] pixels;//tablicza pixeli - tutaj trzymamy stan naszego 'ekranu'
+	
+	private Screan()//tworzac Screan , 
 	{
-		//this.width = width;
-		//this.height = height;
-		this.pixels = new char[height][width];
+		this.pixels = new char[10][500];
 	}
 
-	@Override
-	public void setPixel(int x, int y, char color) {
-		this.pixels[y][x] = color;
-	}
-
-	@Override
-	public void printToConsole() {
-		for(int y=0; y<this.pixels.length; y++)
+	public static Screan getInctance()
+	{
+		if(insance == null)
 		{
-			for(int x=0; x<this.pixels[y].length; x++)
+			insance = new Screan();
+		}
+		return insance;
+	}
+	
+	public void setPixel(int x, int y, char color) { // ustawiamy kolor (znak) w wybraym miejscy (x,y)
+		this.pixels[y][x] = color;// przypisujemy kolor (znak) do odpowiedniego miejsca w tablicy
+	}
+
+	public void printToConsole() {//wypisujemy zawartosc tablicy na konsole
+		for(int y=0; y<this.pixels.length; y++) //ilosc tablic bedocych wieraszmi
+		{
+			for(int x=0; x<this.pixels[y].length; x++) //dlugosc tablicy - jednego wiersza
 			{
-				System.out.print(this.pixels[y][x]);
+				System.out.print(this.pixels[y][x]);//wypisujemy wybrany element na ekran (bez entera)
 			}
-			System.out.println();
+			System.out.println();//po przejscu calej petli w wierszu dajemy enter.
 		}
 	}
 
-	@Override
-	public void clearMemory() {
+	public void clearMemory() {// kazdy element tablicy ustawiamy na spacje
 		for(int y=0; y<this.pixels.length; y++)
 		{
 			for(int x=0; x<this.pixels[y].length; x++)
@@ -42,7 +53,7 @@ public class Screan implements IScreanForShapes, IScrean{
 	}
 
 	@Override
-	public void clearConsole() {
+	public void clearConsole() {// wypisujemy sames spacje
 		for(int y=0; y<this.pixels.length; y++)
 		{
 			for(int x=0; x<this.pixels[y].length; x++)

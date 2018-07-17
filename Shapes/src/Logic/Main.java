@@ -6,17 +6,14 @@ public class Main {
 
 	public static void main(String[] args) {
 		
-		Screan s = new Screan(500, 10);
-		IScrean screan = s;
 		
-		Triangle triangle = new Triangle(4,s);
-		triangle.print(1, 1);
-		triangle.print(1, 3);
-		triangle.print(15, 3);
-		screan.printToConsole();
-		// TODO Auto-generated method stub
-		//System.out.println("*****####**********88888888****************************************************************************************************");
-		//System.out.p
+		IScrean screan = Screan.getInctance(); // podajemy obiekt do interfejsu , uzywajac tego interfejsu mamy dostep tylko do niektorych funkcji
+		
+		Triangle triangle = new Triangle(4, Screan.getInctance());//podajemy pelny obieks Screan s, ale triangle pobiera ten obiekt do interfejsu przez co mamy dostep tylko do funkcji z tego interfejsu
+		triangle.print(1, 1);//drokujemy obiekt na screan (na razie jeszcze nie wyswietlamy)
+		triangle.print(1, 3);//to samo co poprzenio
+		triangle.print(15, 3);//to samo co poprzenio
+		screan.printToConsole();//wypisujemy to co zgromadzilismy w obiekkce scran.
 	}
 
 }
