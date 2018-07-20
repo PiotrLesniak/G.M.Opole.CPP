@@ -1,21 +1,30 @@
 package MyFirstPackage;
 
-import java.io.BufferedReader;
 import java.io.IOException;
-import java.io.InputStreamReader;
+import Exceptions.IncorectYearException;
+import Mashines.Excavator;
+import Mashines.Mashine;
+import Mashines.PneumaticHammer;
+import Mashines.Truck;
 
 public class Main {
 
 	public static void main(String[] args) {
-		Saiving saiving = new FileSaiving();
+	
+	
 		
+		Menu menu = new Menu();
+		//menu.showMenu();
 		
+		//Saiving saiving = new FileSaiving();
+		
+		 
 		
 		//System.out.println("  *");
 		//System.out.println(" ***");
 		//System.out.println("*****");
 		//System.out.println("  #");
-		saiving.save();
+		//saiving.save();
 		
 		System.out.println("");
 		
@@ -28,6 +37,17 @@ public class Main {
 		Truck truck= new Truck();
 		PneumaticHammer pneumaticHammer = new PneumaticHammer(100);
 		
+		try {
+			truck.ReadYear();
+		} 
+		
+		catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (IncorectYearException e) {
+			System.out.println("Podano niepoprawny rok ("+ e.getYear() + ")");
+		}
+		
 		Mashine[] mashines = new Mashine[3];
 		mashines[0] = excavator; 
 		mashines[1] = truck; 
@@ -38,6 +58,7 @@ public class Main {
 		vehicles[1] = truck;
 		
 		showInformation(mashines);
+		showInformation(null);
 		refueling(vehicles);
 		
 		Object o = new Excavator();
@@ -65,30 +86,12 @@ public class Main {
 		
 		System.out.println("pierwszy program");
 		System.out.println(d);
+	}
 		
-		
-		 BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
-	        
-		 System.out.print("Enter String");
-	        	try {
-					String s = br.readLine();
-				} catch (IOException e1) {
-					// TODO Auto-generated catch block
-					e1.printStackTrace();
-				}
 			
 	        
 	        	
-	        	System.out.print("Enter Integer:");
 	        
-	            try {
-					int i = Integer.parseInt(br.readLine());
-				} catch (IOException e) {
-					// TODO Auto-generated catch block
-					e.printStackTrace();
-				}
-	        
-	}
 	
 	public static void showInformation(Mashine[] mashines)
 	{
