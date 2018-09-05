@@ -8,16 +8,16 @@ import Exceptions.IncorectYearException;
 
 public class MyReader {
 
-	BufferedReader reader;
+	BufferedReader reader;// uchwyt do klasy czytajacej 
 	
 	public MyReader()
 	{
-		reader = new BufferedReader(new InputStreamReader(System.in));  
+		reader = new BufferedReader(new InputStreamReader(System.in));//inicjujemy klase czytajaca  
 	}
 	public int readInt() throws IOException
 	{
-		String line = reader.readLine();
-		return Integer.parseInt(line);
+		String line = reader.readLine();//wcztujemy linie od uzyrkownika jako String
+		return Integer.parseInt(line);//zamieniamy (parsujemy) Stringa na Integera
 	}
 	
 	public int readYear() throws IOException, IncorectYearException
