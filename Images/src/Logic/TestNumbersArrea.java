@@ -12,21 +12,26 @@ public class TestNumbersArrea implements INumbersArrea{
 	public void print() {
 		for (int y = 0; y < 11; y++) {
 			for (int x = 0; x < 11; x++) {
-				if(this.arrayInt[x][y] < 10)
+				if(this.arrayInt[y][x] < 10)
 				{
 					System.out.print(' ');
 				}
-				System.out.print(this.arrayInt[x][y] + " ");
+				System.out.print(this.arrayInt[y][x] + ", ");
 			}
 			System.out.println();
 		}
+	}
+	
+	public long[][] GetArray()
+	{
+		return this.arrayInt;
 	}
 
 	//implementacja metody ktora wymaga interfejs
 	//sluzy do wkladania liczby do okreslonej pozycji
 	@Override
 	public void setNumber(int x, int y, long number) {
-		this.arrayInt[x][y] = number;
+		this.arrayInt[y][x] = number;
 		
 	}
 
