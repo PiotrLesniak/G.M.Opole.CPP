@@ -31,7 +31,7 @@ public class NumberArea implements INumbersArrea {
 	//klasa umozliwia wpusanie do przestrzeni liczb liczby w danym punkcie (x,y)
 	//po ustawieniu liczby w danym punkcie od razu zamieniamy ja na piksel i wpisujemy do obrazka.
 	@Override
-	public void setNumber(Integer x, Integer y, Long number) {
+	public void setNumber(int x, int y, long number) {
 		
 		// jezeli liczba jest = 1 to znaczy ze jest to pierwsza liczba i jest ona na srodku
 		//dla tej liczby ustawiamy kolor czerwony, zeby dodatkowo zaznaczyc storek obrazka

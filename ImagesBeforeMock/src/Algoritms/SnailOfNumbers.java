@@ -23,7 +23,7 @@ public class SnailOfNumbers {
 	public void runAlgoritm() {
 		int centerPosition = (numbersArrea.getSize()-1)/2;  //obliczamy centralna pozycje dla liczby 1
 		
-		numbersArrea.setNumber(new Integer(centerPosition), new Integer(centerPosition), new Long(1));//ustawiamy na srodku liczbe 1
+		numbersArrea.setNumber(centerPosition, centerPosition, 1);//ustawiamy na srodku liczbe 1
 		this.X = centerPosition;//ustawiamy x na srodkowa pozyche
 		this.Y = centerPosition;//ustawiamt y na srodkowa pozycje
 		

@@ -1,34 +1,26 @@
 package Test;
 
+import static org.junit.Assert.*;
+
 import org.junit.After;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
-import org.mockito.Matchers;
-import org.mockito.Mock;
-import org.mockito.Mockito;
-import org.mockito.MockitoAnnotations;
 
 import Algoritms.SnailOfNumbers;
-import Logic.INumbersArrea;
+import Logic.NumberArea;
 import Logic.TestNumbersArrea;
 
 public class TestSnailOfNumbers {
 
 	@Before
 	public void setUp() throws Exception {
-		MockitoAnnotations.initMocks(this);//inicjujemy nasze mocki 
-		//czyli do interfejsow oznaczonych adnotacja @Mock tworzymy odpowiednie obiekty (takie na niby) nazywane mockami
-		
 	}
 
 	@After
 	public void tearDown() throws Exception {
 	}
 
-	@Mock //ta adnotacja pokazuje bibliotece Mockito ze ta referencje trzeba zamokowac
-	INumbersArrea numbersArrea;
-	
 	@Test
 	public void testAlgoritm() {
 		//na potrzeby testu tworzymy klase testowa dla przestrzeni liczb.
@@ -69,26 +61,4 @@ public class TestSnailOfNumbers {
 				//https://kobietydokodu.pl/niezbednik-juniora-mockito/
 	}
 
-	//algorytm z uzyciem mockow
-	@Test
-	public void testAlgoritm2() {
-		
-		//numbersArrea pod tym interfejsem kryje sie obiekt wygenerowany przez Mockito
-		SnailOfNumbers snailOfNumbers = new SnailOfNumbers(numbersArrea);//tworzymy obiekt algorytmu podajac wygenerowany obiekt
-		
-		//programujemy nasz obiekt
-		Mockito.when(numbersArrea.getSize()).thenReturn(3);//getSize() zawsze zwroci 3
-		Mockito.doNothing().when(numbersArrea).setNumber(Matchers.anyObject(), Matchers.anyObject(), Matchers.anyObject());//setNumber nic nie bedzie zwracac
-		
-		snailOfNumbers.runAlgoritm();// uruamiamy nasz algorytm
-
-		Mockito.verify(numbersArrea, Mockito.times(4)).getSize();//weryfikujemy czy algorytm uruchomi³ getSize() 4 razy  
-		
-		//weryfikujemy czy algorytm uruchomi³ setNumber 9 razy
-		Mockito.verify(numbersArrea, Mockito.times(9)).setNumber(Matchers.anyObject(), Matchers.anyObject(), Matchers.anyObject());
-		
-		//https://kobietydokodu.pl/niezbednik-juniora-mockito/
-	}
-
-	
 }

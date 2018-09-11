@@ -30,7 +30,7 @@ public class TestNumbersArrea implements INumbersArrea{
 	//implementacja metody ktora wymaga interfejs
 	//sluzy do wkladania liczby do okreslonej pozycji
 	@Override
-	public void setNumber(Integer x, Integer y, Long number) {
+	public void setNumber(int x, int y, long number) {
 		this.arrayInt[y][x] = number;
 		
 	}
